@@ -1,35 +1,34 @@
-name: Build LaTeX document
+name: Build LaTeX Documents
 on: [push]
 
 jobs:
-  build_latex:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Компиляция каждого файла отдельно
+      - name: Setup LaTeX environment
+        uses: xu-cheng/latex-action@v3
+        with:
+          tex-distribution: texlive-full
+
       - name: Compile Russian CV
-        uses: xu-cheng/latex-action@v3
-        with:
-          root_file: ${{ github.workspace }}/src/cv_ru.tex
-          working_directory: src/
-
-      - name: Compile English CV
-        uses: xu-cheng/latex-action@v3
-        with:
-          root_file: ${{ github.workspace }}/src/cv_en.tex
-          working_directory: src/
-
-      - name: Move PDF files
         run: |
-          mv src/cv_ru.pdf .
-          mv src/cv_en.pdf .
-
-      - name: Upload PDF files
+          cd src
+          pdflatex -interaction=nonstopmode cv_ru.tex
+          mv cv_ru.pdf ..
+          
+      - name: Compile English CV
+        run: |
+          cd src
+          pdflatex -interaction=nonstopmode cv_en.tex
+          mv cv_en.pdf ..
+          
+      - name: Upload PDF artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: PDF
+          name: resumes
           path: |
             cv_ru.pdf
             cv_en.pdf
