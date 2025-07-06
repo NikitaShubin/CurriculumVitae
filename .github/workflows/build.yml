@@ -10,15 +10,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
-      releases: write  # Добавляем разрешение на запись в релизы
-      
+      packages: read
+      contents: write
+
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
         
       - name: Setup TeX Live
-        uses: dante-ev/latex-action@v3  # Обновленный action для LaTeX
+        uses: dante-ev/latex-action@v3
         with:
           tex-distribution: texlive-full
         
@@ -26,15 +26,13 @@ jobs:
         run: |
           cd CurriculumVitae/src
           pdflatex -interaction=nonstopmode cv_ru.tex
-          cp cv_ru.pdf ..
-        working-directory: ./
+          mv cv_ru.pdf ..
         
       - name: Compile English CurriculumVitae
         run: |
           cd CurriculumVitae/src
           pdflatex -interaction=nonstopmode cv_en.tex
-          cp cv_en.pdf ..
-        working-directory: ./
+          mv cv_en.pdf ..
           
       - name: Upload to Release
         if: github.event_name == 'release'
