@@ -15,12 +15,12 @@ jobs:
         uses: xu-cheng/latex-action@v3
         with:
           root_file: |
-            ./src/cv_ru.tex
-            ./src/cv_en.tex
+            ./src/cv_rus.tex
+            ./src/cv_eng.tex
       - name: Upload PDF files
         uses: actions/upload-artifact@v4
         with:
           name: PDF
           path: |
-            cv_ru.pdf
-            cv_en.pdf
+            cv_rus.pdf
+            cv_eng.pdf
