@@ -12,13 +12,13 @@ jobs:
       - name: Compile Russian CV
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: src/cv_ru.tex
+          root_file: ${{ github.workspace }}/src/cv_ru.tex
           working_directory: src/
 
       - name: Compile English CV
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: src/cv_en.tex
+          root_file: ${{ github.workspace }}/src/cv_en.tex
           working_directory: src/
 
       - name: Move PDF files
