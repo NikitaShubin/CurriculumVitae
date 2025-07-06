@@ -8,8 +8,8 @@ jobs:
         uses: actions/checkout@v4
       - name: dir
         run: |
-          dir .
-          ls -laht
+          dir src
+          ls -laht src
           pwd
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v3
