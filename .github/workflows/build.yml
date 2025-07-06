@@ -9,28 +9,37 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      releases: write  # Добавляем разрешение на запись в релизы
+      
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         
-      - name: Compile Russian Curriculum Vitae
-        uses: xu-cheng/latex-action@v3
+      - name: Setup TeX Live
+        uses: dante-ev/latex-action@v3  # Обновленный action для LaTeX
         with:
-          root_file: CurriculumVitae/src/cv_ru.tex
-          working_directory: CurriculumVitae/src/
-          output_file: cv_ru.pdf
+          tex-distribution: texlive-full
+        
+      - name: Compile Russian CurriculumVitae
+        run: |
+          cd CurriculumVitae/src
+          pdflatex -interaction=nonstopmode cv_ru.tex
+          cp cv_ru.pdf ..
+        working-directory: ./
+        
+      - name: Compile English CurriculumVitae
+        run: |
+          cd CurriculumVitae/src
+          pdflatex -interaction=nonstopmode cv_en.tex
+          cp cv_en.pdf ..
+        working-directory: ./
           
-      - name: Compile English Curriculum Vitae
-        uses: xu-cheng/latex-action@v3
+      - name: Upload to Release
+        if: github.event_name == 'release'
+        uses: softprops/action-gh-release@v2
         with:
-          root_file: CurriculumVitae/src/cv_en.tex
-          working_directory: CurriculumVitae/src/
-          output_file: cv_en.pdf
-          
-      - name: Upload Artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: pdfs
-          path: |
-            CurriculumVitae/src/cv_ru.pdf
-            CurriculumVitae/src/cv_en.pdf
+          files: |
+            CurriculumVitae/cv_ru.pdf
+            CurriculumVitae/cv_en.pdf
