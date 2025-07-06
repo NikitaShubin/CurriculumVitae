@@ -1,0 +1,135 @@
+\documentclass[11pt]{article}
+)
+\usepackage[T2A]{fontenc}     % внутренняя T2A кодировка TeX
+\usepackage[russian]{babel}   % включение переносов
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.4in]{geometry}
+\pagestyle{empty} % нумерация выкл.
+\addtolength{\textheight}{1.75in}
+\usepackage[colorlinks]{hyperref}
+\usepackage{longtable}
+\usepackage{color}
+\usepackage{setspace}
+\usepackage{multirow}
+\usepackage{graphicx}
+
+% Изменить заголовок списка литературы
+\addto\captionsrussian{\def\refname{Publications and resources}}
+
+\makeatletter
+\bibliographystyle{unsrt}
+\renewcommand{\@biblabel}[1]{#1.} 
+\makeatother
+
+\renewenvironment{itemize}{
+	\begin{list}{\labelitemi}{
+			\setlength{\topsep}{0pt}
+			\setlength{\partopsep}{0pt}
+			\setlength{\parskip}{0pt}
+			\setlength{\parsep}{0pt}
+			\setlength{\itemsep}{0pt}
+		}
+	}{\end{list}}
+
+\begin{document}	
+	\noindent {\sffamily{\Huge{\textbf{Nikita Shubin}}}}
+	\vspace{0.5em}
+	
+	\noindent +7 920 633 94 11 | \href{mailto:shubin.kit@ya.ru}{shubin.kit@ya.ru} | Ryazan, Russia (relocation is acceptable)
+	\vspace{0.5em}
+	\hrule
+	
+	%\vspace{1.5em}
+	
+	%\noindent {\textbf{Цель:}} Участие в разработке нейроподобных интеллектуальных систем. Возможность получить глубокое представление о принципах работы отдельных нейронов и нервной системы вцелом. Перевод биологических принципов самоорганизации на язык математики и программирования. Создание сильного искусственного интеллекта.
+	
+	\vspace{1em}
+	
+	\noindent {\textbf{Profile:}} Team Lead/Data Techlead/Senior Data Scientist (DL, CV). \href{https://disk.yandex.ru/i/ffl8gXNlYxGT8g}{PhD in engineering}. General work experience as a research programmer -- 18 years.\\
+
+	%\vspace{1em}
+	\noindent {\textbf{Employment history:}}
+	
+	\begin{tabular} {l | p{0.815\textwidth}}
+		\textbf{2023 -- Now} & ML Team Lead in \href{https://agrodigit.ru/}{<<ЦПТ <<Агроцифра>> LLC}:
+		\begin{itemize}
+			\item Built a video data processing pipeline for dataset expansion.
+			\item Assembled an annotation team from scratch.
+			\item Developed software that drastically simplifies the data annotation process in \href{https://www.cvat.ai/}{CVAT}, utilizing pre-annotation with the Segment Anything Model \href{https://segment-anything.com/}{v1} and  \href{https://sam2.metademolab.com/demo}{v2}.
+			\item Developed and trained models to solve assigned problems.
+		\end{itemize}\\
+		\textbf{2022 -- 2023} & Head of Machine Learning Team in <<ЭДС>> LLC:
+		\begin{itemize}
+			\item Object detection and segmentation on photos and videos (NDA).
+			\item Combined several data sources for training.
+			\item I was the product owner of a synthetic dataset generator based on \href{https://www.unrealengine.com/en-US/unreal-engine-5}{Unreal Engine 5}, as well as filling the real dataset in CVAT.
+		\end{itemize}\\
+		\textbf{2021 -- 2022} & Video Analytics Team Lead (Senior) in \href{https://www.stream-labs.com/}{Stream Labs}:
+		\begin{itemize}
+			\item a neural network model for ECG classification was developed, which is now working in the system called \href{https://va1235.wixsite.com/tis-tat/edinyj-kardiolog-respubliki-tatarst}{«Unified cardiologist of the Tatarstan Republic»};
+			\item a prototype of pathology detection in lungs computed tomography has been developed.
+		\end{itemize}\\
+		\textbf{2020 -- 2021} & Research programmer in \href{https://www.spiritdsp.com/company/}{Spirit DSP}:
+		\begin{itemize}
+			\item the development of a new video codec based on neural networks;
+			\item developing a real-time neural network replacing the background for video communication.
+		\end{itemize}\\
+		\textbf{2007 -- 2020} & Software engineer in Department of Automation and Information Technologies in control of \href{http://www.rsreu.ru/en/}{Ryazan State Radio Engineering University}:
+		\begin{itemize}
+			\item My research on image analysis have received \href{https://www.rfbr.ru/project_search/350568/}{RFBR}, \href{https://grants.extech.ru/grants/res/winners.php?OZ=9&TZ=K&year=2016}{Grant from the President of Russia} and \href{http://rscf.ru/sites/default/files/docfiles/Winners_0029.pdf}{RSF} grant support;
+			\item \href{https://ryazan.bezformata.com/listnews/aspiranti-rgrtu-pobediteli-konkursa/81548415/}{«Young scientist of the year 2020»};
+			\item \hyperlink{AutorIDs}{40 publications in conference proceedings and scientific journals};
+			\item 2 patents and 1 computer program registration certificate.
+		\end{itemize}
+		\vspace*{-\baselineskip} % Удаление отсупа после
+	\end{tabular}
+	\vspace{0.9em}\\
+	\begin{longtable} {r | p{0.77\textwidth}}
+		\textbf{Area of interest}\vspace{1em} & СV, ML, DL, multi-agent systems, embadded systems.\\
+		
+		\textbf{Research directions}\vspace{1em} & Object detection and parameters estimation algorithms: classical methods of image processing \cite{wrt}, neural network technologies application for programming the behavior of agents in a multi-agent system \cite{mas}. Efficient video data compression.\\
+		
+		\textbf{Basic skills} & \underline{Programming}: \it{Python, Matlab, Bash (Linux), Docker, CVAT, \LaTeX, Git.}\vspace{0.5em}\\ 
+		& \underline{ML stack}: \it{Keras, TensorFlow, PyTorch, KerasTuner, ONNX, OpenCV, Scikit-learn, Scikit-image, Albumentations, Jupyter, Numpy, Numba, Pandas.}\vspace{0.5em}\\
+		\vspace{1em} & \underline{Scientific research results publication}: \it{Participation in conferences, articles preparation.}\\
+		
+		\textbf{Additional skills} & \underline{3D graphics:} \it{3DS Max, Blender, mathematical foundations of computer graphics.}\\
+		& \underline{Image/video/audio processing/labeling:} \it{Photoshop, Premier Pro, VirtualDub, ffmpeg, SAM, GroundingDINO.}\\
+		\vspace{1em} & \underline{English level:} \it{Intermediate.}\\
+	\end{longtable}		
+	
+	\newpage
+	Appendix
+	\hrule
+	\vspace{1em}
+	
+	\noindent {\textbf{Education:}}
+	
+	\begin{tabular} {c | c | p{0.62\textwidth}}
+		\textbf{2003 -- 2008} & \href{http://www.rsreu.ru/en/}{RSREU} & \href{http://www.rsreu.ru/en/about-university/faculties-and-departments/faculty-of-automation-and-information-technologies-in-sontrol}{Faculty of Automation and Information Technologies in Сontrol.} \vspace{0.5em}\\
+		\textbf{2008 -- 2011} & Postgraduate studies & Department of Automation and Information Technologies in Сontrol.\\
+	\end{tabular}
+	
+	\begin{longtable} {r | p{0.77\textwidth}}
+		\textbf{Self-education}
+		& 
+		\href{https://lab.karpov.courses/certificate/752f8aad-7f6e-40ad-98c2-12efe12bc0b7/en/}{Course «System Design»}\\
+		&
+		\href{https://disk.yandex.ru/i/H5-s3Lw6j-1wkg}{Professional retraining} course \href{https://disk.yandex.ru/i/UO1qC0H4FCa8LQ}{\textquotedblleft Data science, neural networks, machine learning and artificial intelligence\textquotedblright} \cite{inpainting} and \href{https://disk.yandex.ru/i/t3yNB56C3nNo5A}{\textquotedblleft Advanced course\textquotedblright}\\
+		&  \href{https://www.coursera.org/account/accomplishments/certificate/DMUZAUCWBQG4}{Course «Stats for data analysis»}\\
+		& \href{https://www.coursera.org/account/accomplishments/certificate/H8BWKAK4Y96D}{Course «Unsupervised learning»}\\
+		& \href{https://www.coursera.org/account/accomplishments/certificate/9GQC5C4UP9YB}{Course «Supervised learning»}\\
+		& \href{https://www.coursera.org/account/accomplishments/certificate/2AZHZW96LJ2N}{Course «Mathematics and python for data analysis»}\\
+		\vspace{1em} & 
+		\href{https://www.coursera.org/account/accomplishments/certificate/6K5Z2UFA5887}{Course «Machine Learning Introduction»}\\
+		
+		\hypertarget{AutorIDs}{\textbf{Author IDs}} & WoS ResearcherID: \href{https://publons.com/researcher/2345963/nikita-y-shubin/}{\underline{N-5016-2015}}\\
+		& Scopus AuthorID: \href{https://www.scopus.com/authid/detail.uri?authorId=56094972000}{\underline{56094972000}}\\
+		& Orcid: \href{https://orcid.org/0000-0003-4563-5643}{\underline{0000-0003-4563-5643}}\\
+		& Google Scholar Citations ID: \href{https://scholar.google.com/citations?user=auKREHMAAAAJ}{\underline{auKREHMAAAAJ}}
+	\end{longtable}
+	
+	%\addcontentsline{toc}{section}{Список ресурсов}
+	\bibliography{refs_eng}
+
+\end{document}

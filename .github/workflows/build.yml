@@ -1,0 +1,36 @@
+name: Build LaTeX Documents
+
+on:
+  push:
+    branches: [main]
+  release:
+    types: [created]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      - name: Compile Russian Curriculum Vitae
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: CurriculumVitae/src/cv_ru.tex
+          working_directory: CurriculumVitae/src/
+          output_file: cv_ru.pdf
+          
+      - name: Compile English Curriculum Vitae
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: CurriculumVitae/src/cv_en.tex
+          working_directory: CurriculumVitae/src/
+          output_file: cv_en.pdf
+          
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: pdfs
+          path: |
+            CurriculumVitae/src/cv_ru.pdf
+            CurriculumVitae/src/cv_en.pdf
