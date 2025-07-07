@@ -15,8 +15,9 @@ jobs:
           run: |
             apt-get update -y
             apt-get install -y texlive-full
-            pdflatex ./src/cv_rus.tex
-            pdflatex ./src/cv_eng.tex
+            cd ./src
+            pdflatex cv_rus.tex
+            pdflatex cv_eng.tex
       - name: Upload PDF file
         uses: actions/upload-artifact@v4
         with:
