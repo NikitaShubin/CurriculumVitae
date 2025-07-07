@@ -19,7 +19,7 @@ jobs:
             cd ./src
             pdflatex cv_rus.tex
             pdflatex cv_eng.tex
-			mv *.tex ..
+            mv *.tex ..
 
       # Выгрузка результатов:
       - name: Upload RUS
