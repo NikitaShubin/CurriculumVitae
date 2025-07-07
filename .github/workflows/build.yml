@@ -36,8 +36,8 @@ jobs:
         if: github.event_name == 'release'
         with:
           files: |
-            cv_rus.pdf
-            cv_eng.pdf
+            src/cv_rus.pdf
+            src/cv_eng.pdf
           generate_release_notes: true
           draft: false
 
@@ -48,5 +48,5 @@ jobs:
         with:
           name: cv-pdfs
           path: |
-            cv_rus.pdf
-            cv_eng.pdf
+            src/cv_rus.pdf
+            src/cv_eng.pdf
