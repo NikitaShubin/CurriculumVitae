@@ -5,6 +5,8 @@ jobs:
   build_latex:
     runs-on: ubuntu-latest
     steps:
+
+      # Компиляция:
       - name: Set up Git repository
         uses: actions/checkout@v4
       - uses: xu-cheng/texlive-action@v3
@@ -18,7 +20,19 @@ jobs:
             cd ./src
             pdflatex cv_rus.tex
             pdflatex cv_eng.tex
-      - name: Upload PDF file
+
+      # Выгрузка результатов:
+      - name: Upload RUS
+        uses: actions/upload-artifact@v4
+        with:
+          name: PDF
+          path: src/cv_rus.pdf
+      - name: Upload ENG
+        uses: actions/upload-artifact@v4
+        with:
+          name: PDF
+          path: src/cv_eng.pdf
+      - name: Upload Both
         uses: actions/upload-artifact@v4
         with:
           name: PDF
