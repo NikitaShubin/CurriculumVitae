@@ -12,6 +12,18 @@ jobs:
       contents: write  # Необходимо для создания релизов
 
     steps:
+
+      # Debag:
+      - name: Debug event type
+        run: |
+          echo "Event name: ${{ github.event_name }}"
+          echo "Event action: ${{ github.event.action }}"
+          echo "Ref: ${{ github.ref }}"
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Получаем всю историю для работы с тегами
+
       # Шаг 1: Загрузка репозитория:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -31,6 +43,10 @@ jobs:
             pdflatex -interaction=nonstopmode cv_eng.tex
             mv *.pdf ..
 
+      # Debag:
+      - name: List files before release
+        run: ls -la
+
       # Шаг 3: Создание релиза и прикрепление PDF:
       - name: Create Release and Upload Assets
         uses: softprops/action-gh-release@v2
@@ -41,6 +57,16 @@ jobs:
             cv_eng.pdf
           generate_release_notes: true
           draft: false
+        # Debug:
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Debug:
+      - name: Check if release step was skipped
+        if: ${{ github.event_name == 'release' && !steps.create_release.outputs.id }}
+        run: |
+          echo "Release step was skipped or failed!"
+          echo "Check permissions and workflow configuration"
 
       # Шаг 4: Загрузка артефактов (для обычных push):
       - name: Upload Artifacts
