@@ -25,17 +25,17 @@ jobs:
       - name: Upload RUS
         uses: actions/upload-artifact@v4
         with:
-          name: PDF
+          name: cv_rus
           path: src/cv_rus.pdf
       - name: Upload ENG
         uses: actions/upload-artifact@v4
         with:
-          name: PDF
+          name: cv_eng
           path: src/cv_eng.pdf
       - name: Upload Both
         uses: actions/upload-artifact@v4
         with:
-          name: PDF
+          name: cv
           path: |
             src/cv_rus.pdf
             src/cv_eng.pdf
