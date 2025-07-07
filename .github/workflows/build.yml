@@ -1,15 +1,24 @@
+name: Build and Release CV
+on:
+  push:
+    branches: [main]
+  release:
+    types: [created]
 
-name: Build LaTeX document
-on: [push]
 jobs:
   build_latex:
     runs-on: ubuntu-latest
-    steps:
+    permissions:
+      contents: write  # Необходимо для создания релизов
 
-      # Компиляция:
-      - name: Set up Git repository
+    steps:
+      # Шаг 1: Загрузка репозитория
+      - name: Checkout repository
         uses: actions/checkout@v4
-      - uses: xu-cheng/texlive-action@v3
+
+      # Шаг 2: Установка TeX Live
+      - name: Setup TeX Live
+        uses: xu-cheng/texlive-action@v3
         with:
           texlive_version: latest
           scheme: full
@@ -17,25 +26,37 @@ jobs:
           run: |
             apt-get update -y
             apt-get install -y texlive-full
-            cd ./src
-            pdflatex cv_rus.tex
-            pdflatex cv_eng.tex
 
-      # Выгрузка результатов:
-      - name: Upload RUS
+      # Шаг 3: Компиляция документов
+      - name: Compile Russian CV
+        run: |
+          cd ./src
+          pdflatex -interaction=nonstopmode cv_rus.tex
+          mv cv_rus.pdf ..
+          
+      - name: Compile English CV
+        run: |
+          cd ./src
+          pdflatex -interaction=nonstopmode cv_eng.tex
+          mv cv_eng.pdf ..
+
+      # Шаг 4: Создание релиза и прикрепление PDF
+      - name: Create Release and Upload Assets
+        uses: softprops/action-gh-release@v2
+        if: github.event_name == 'release'
+        with:
+          files: |
+            cv_rus.pdf
+            cv_eng.pdf
+          generate_release_notes: true
+          draft: false
+
+      # Шаг 5: Загрузка артефактов (для обычных push)
+      - name: Upload Artifacts
+        if: github.event_name != 'release'
         uses: actions/upload-artifact@v4
         with:
-          name: cv_rus
-          path: src/cv_rus.pdf
-      - name: Upload ENG
-        uses: actions/upload-artifact@v4
-        with:
-          name: cv_eng
-          path: src/cv_eng.pdf
-      - name: Upload Both
-        uses: actions/upload-artifact@v4
-        with:
-          name: cv
+          name: cv-pdfs
           path: |
-            src/cv_rus.pdf
-            src/cv_eng.pdf
+            cv_rus.pdf
+            cv_eng.pdf
