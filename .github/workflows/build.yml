@@ -17,9 +17,9 @@ jobs:
             apt-get update -y
             apt-get install -y texlive-full
             cd ./src
-            pdflatex cv_rus.tex
-            pdflatex cv_eng.tex
-            mv *.tex ..
+            pdflatex -interaction=nonstopmode cv_rus.tex
+            pdflatex -interaction=nonstopmode cv_eng.tex
+            mv *.pdf ..
 
       # Выгрузка результатов:
       - name: Upload RUS
