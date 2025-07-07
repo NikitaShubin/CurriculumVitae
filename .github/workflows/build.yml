@@ -29,6 +29,7 @@ jobs:
             cd ./src
             pdflatex -interaction=nonstopmode cv_rus.tex
             pdflatex -interaction=nonstopmode cv_eng.tex
+            mv *.pdf ..
 
       # Шаг 3: Создание релиза и прикрепление PDF:
       - name: Create Release and Upload Assets
@@ -36,8 +37,8 @@ jobs:
         if: github.event_name == 'release'
         with:
           files: |
-            src/cv_rus.pdf
-            src/cv_eng.pdf
+            cv_rus.pdf
+            cv_eng.pdf
           generate_release_notes: true
           draft: false
 
@@ -48,5 +49,5 @@ jobs:
         with:
           name: cv-pdfs
           path: |
-            src/cv_rus.pdf
-            src/cv_eng.pdf
+            cv_rus.pdf
+            cv_eng.pdf
