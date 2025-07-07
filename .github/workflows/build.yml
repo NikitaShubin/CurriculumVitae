@@ -1,35 +1,14 @@
-name: Build and Release CV
-on:
-  push:
-    branches: [main]
-  release:
-    types: [created]
-
+name: Build and Release CurriculumVitae
+on: [push]
 jobs:
   build_latex:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write  # Необходимо для создания релизов
-
     steps:
 
-      # Debag:
-      - name: Debug event type
-        run: |
-          echo "Event name: ${{ github.event_name }}"
-          echo "Event action: ${{ github.event.action }}"
-          echo "Ref: ${{ github.ref }}"
-
-      # Шаг 1: Загрузка репозитория:
-      - name: Checkout repository
+      # Компиляция:
+      - name: Set up Git repository
         uses: actions/checkout@v4
-        # Debug:
-        with:
-          fetch-depth: 0  # Получаем всю историю для работы с тегами
-
-      # Шаг 2: Установка TeX Live и компиляция документов:
-      - name: Setup TeX Live
-        uses: xu-cheng/texlive-action@v3
+      - uses: xu-cheng/texlive-action@v3
         with:
           texlive_version: latest
           scheme: full
@@ -38,60 +17,25 @@ jobs:
             apt-get update -y
             apt-get install -y texlive-full
             cd ./src
-            pdflatex -interaction=nonstopmode cv_rus.tex
-            pdflatex -interaction=nonstopmode cv_eng.tex
-            mv *.pdf ..
+            pdflatex cv_rus.tex
+            pdflatex cv_eng.tex
+			mv *.tex ..
 
-      # Debag:
-      - name: List files before release
-        run: ls -la
-
-      # Шаг 3: Создание релиза и прикрепление PDF:
-      - name: Create Release
-        uses: actions/create-release@v1
-        if: github.event_name == 'release'
-        id: create_release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          draft: false
-          prerelease: false
-      - name: Upload Russian CV
-        uses: actions/upload-release-asset@v1
-        if: github.event_name == 'release'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./cv_rus.pdf
-          asset_name: cv_rus.pdf
-          asset_content_type: application/pdf
-      - name: Upload English CV
-        uses: actions/upload-release-asset@v1
-        if: github.event_name == 'release'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./cv_eng.pdf
-          asset_name: cv_eng.pdf
-          asset_content_type: application/pdf
-
-      # Debug:
-      - name: Check if release step was skipped
-        if: ${{ github.event_name == 'release' && !steps.create_release.outputs.id }}
-        run: |
-          echo "Release step was skipped or failed!"
-          echo "Check permissions and workflow configuration"
-
-      # Шаг 4: Загрузка артефактов (для обычных push):
-      - name: Upload Artifacts
-        if: github.event_name != 'release'
+      # Выгрузка результатов:
+      - name: Upload RUS
         uses: actions/upload-artifact@v4
         with:
-          name: cv-pdfs
+          name: cv_rus
+          path: cv_rus.pdf
+      - name: Upload ENG
+        uses: actions/upload-artifact@v4
+        with:
+          name: cv_eng
+          path: cv_eng.pdf
+      - name: Upload Both
+        uses: actions/upload-artifact@v4
+        with:
+          name: cv
           path: |
             cv_rus.pdf
             cv_eng.pdf
