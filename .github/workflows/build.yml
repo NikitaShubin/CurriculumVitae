@@ -19,14 +19,13 @@ jobs:
           echo "Event name: ${{ github.event_name }}"
           echo "Event action: ${{ github.event.action }}"
           echo "Ref: ${{ github.ref }}"
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0  # Получаем всю историю для работы с тегами
 
       # Шаг 1: Загрузка репозитория:
       - name: Checkout repository
         uses: actions/checkout@v4
+        # Debug:
+        with:
+          fetch-depth: 0  # Получаем всю историю для работы с тегами
 
       # Шаг 2: Установка TeX Live и компиляция документов:
       - name: Setup TeX Live
