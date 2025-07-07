@@ -47,18 +47,37 @@ jobs:
         run: ls -la
 
       # Шаг 3: Создание релиза и прикрепление PDF:
-      - name: Create Release and Upload Assets
-        uses: softprops/action-gh-release@v2
+      - name: Create Release
+        uses: actions/create-release@v1
         if: github.event_name == 'release'
-        with:
-          files: |
-            cv_rus.pdf
-            cv_eng.pdf
-          generate_release_notes: true
-          draft: false
-        # Debug:
+        id: create_release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+      - name: Upload Russian CV
+        uses: actions/upload-release-asset@v1
+        if: github.event_name == 'release'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./cv_rus.pdf
+          asset_name: cv_rus.pdf
+          asset_content_type: application/pdf
+      - name: Upload English CV
+        uses: actions/upload-release-asset@v1
+        if: github.event_name == 'release'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./cv_eng.pdf
+          asset_name: cv_eng.pdf
+          asset_content_type: application/pdf
 
       # Debug:
       - name: Check if release step was skipped
