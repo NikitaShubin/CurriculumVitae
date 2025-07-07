@@ -12,11 +12,11 @@ jobs:
       contents: write  # Необходимо для создания релизов
 
     steps:
-      # Шаг 1: Загрузка репозитория
+      # Шаг 1: Загрузка репозитория:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Шаг 2: Установка TeX Live
+      # Шаг 2: Установка TeX Live и компиляция документов:
       - name: Setup TeX Live
         uses: xu-cheng/texlive-action@v3
         with:
@@ -26,21 +26,11 @@ jobs:
           run: |
             apt-get update -y
             apt-get install -y texlive-full
+            cd ./src
+            pdflatex -interaction=nonstopmode cv_rus.tex
+            pdflatex -interaction=nonstopmode cv_eng.tex
 
-      # Шаг 3: Компиляция документов
-      - name: Compile Russian CV
-        run: |
-          cd ./src
-          pdflatex -interaction=nonstopmode cv_rus.tex
-          mv cv_rus.pdf ..
-          
-      - name: Compile English CV
-        run: |
-          cd ./src
-          pdflatex -interaction=nonstopmode cv_eng.tex
-          mv cv_eng.pdf ..
-
-      # Шаг 4: Создание релиза и прикрепление PDF
+      # Шаг 3: Создание релиза и прикрепление PDF:
       - name: Create Release and Upload Assets
         uses: softprops/action-gh-release@v2
         if: github.event_name == 'release'
@@ -51,7 +41,7 @@ jobs:
           generate_release_notes: true
           draft: false
 
-      # Шаг 5: Загрузка артефактов (для обычных push)
+      # Шаг 4: Загрузка артефактов (для обычных push):
       - name: Upload Artifacts
         if: github.event_name != 'release'
         uses: actions/upload-artifact@v4
