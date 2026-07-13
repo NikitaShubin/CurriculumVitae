@@ -1,3 +1,3 @@
 #!/bin/bash
 
-rm *.out *.gz *.log *.aux *.blg *.bbl
+rm -f *.aux *.log *.out *.upa *.upb *.pdf *.bbl *.blg *.synctex.gz
