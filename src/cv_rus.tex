@@ -23,7 +23,7 @@
 \usepackage[most]{tcolorbox}
 
 % Работа с изображениями:
-%\usepackage{tikz}
+\usepackage{tikz}
 
 \definecolor{block-blue}{rgb}{0.8, 0.9, 1}
 \newtcolorbox{textblock}[2][]{colback=block-blue,
@@ -32,7 +32,6 @@
 % Изменить заголовок списка литературы
 \addto\captionsrussian{\def\refname{Публикации и ресурсы}}
 
-\usepackage{graphicx}
 \makeatletter
 \bibliographystyle{unsrt}
 \renewcommand{\@biblabel}[1]{#1.} 
@@ -90,9 +89,8 @@
 			Проекты & Автопилот комбайна и силосопровода (автозаполнение кузова).\\
 			\noindent{Достижения} & 
 			\begin{itemize}
-				\item Выстроил конвейер обработки видеоданных для пополнения датасетов и организовал команду разметки.
-				\item Разработал ПО, радикально упрощающее процесс разметки данных в \href{https://www.cvat.ai/}{CVAT}, используя предразметку с Segment Anything Model \href{https://segment-anything.com/}{v1} и  \href{https://sam2.metademolab.com/demo}{v2}.
-				\item Обучил модели, решающие поставленные задачи.
+			\item Выстроил конвейер обработки видеоданных, организовал команду разметки и разработал ПО для ускорения разметки в \href{https://www.cvat.ai/}{CVAT} с помощью Segment Anything Model \href{https://segment-anything.com/}{v1} и \href{https://sam2.metademolab.com/demo}{v2}. Основные результаты изложены на \href{https://rutube.ru/video/4033ea0473199564892cc5a2f14dcfe6/}{D-Vision-митапе}.
+			\item Обучил модели, решающие поставленные задачи.
 			\end{itemize}
 		\end{tabular}
 		\vspace{0.3em}\hrule\vspace{0.1em}\hrule\vspace{0.5em}

@@ -13,6 +13,7 @@
 \usepackage{setspace}
 \usepackage{multirow}
 \usepackage{graphicx}
+\usepackage{fontawesome5}
 % Изменить заголовок списка литературы
 \addto\captionsrussian{\def\refname{Publications and resources}}
 
@@ -32,10 +33,10 @@
 	}{\end{list}}
 
 \begin{document}	
-	\noindent {\sffamily{\Huge{\textbf{Nikita Shubin}}}}
+	\noindent {\sffamily{\Huge{\textbf{Nikita Shubin}}}~\hfill~\href{https://github.com/NikitaShubin/}{{\sffamily{\Large{\textbf{\faGithub~GitHub}}}}}}
 	\vspace{0.5em}
-	
-	\noindent +7 920 633 94 11 | \href{mailto:shubin.kit@ya.ru}{shubin.kit@ya.ru} | Ryazan, Russia (relocation is acceptable)
+
+	\noindent +7 920 633 94 11 | \href{mailto:shubin.kit@ya.ru}{shubin.kit@ya.ru} | \faTelegram~\href{https://t.me/kitbrain}{@kitbrain} | Ryazan, Russia (relocation is acceptable)
 	\vspace{0.5em}
 	\hrule
 	
@@ -53,16 +54,16 @@
 	\begin{tabular} {l | p{0.815\textwidth}}
 		\textbf{2023 -- Now} & ML Team Lead in \href{https://agrodigit.ru/}{<<ЦПТ <<Агроцифра>> LLC}:
 		\begin{itemize}
-			\item Built a video data processing pipeline for dataset expansion.
-			\item Assembled an annotation team from scratch.
-			\item Developed software that drastically simplifies the data annotation process in \href{https://www.cvat.ai/}{CVAT}, utilizing pre-annotation with the Segment Anything Model \href{https://segment-anything.com/}{v1} and  \href{https://sam2.metademolab.com/demo}{v2}.
+			\item Built a video data processing pipeline, assembled an annotation team, and developed software for speeding up annotation in \href{https://www.cvat.ai/}{CVAT} using Segment Anything Model \href{https://segment-anything.com/}{v1} and \href{https://sam2.metademolab.com/demo}{v2}. Key results presented at the \href{https://rutube.ru/video/4033ea0473199564892cc5a2f14dcfe6/}{D-Vision meetup}.
 			\item Developed and trained models to solve assigned problems.
 		\end{itemize}\\
 		\textbf{2022 -- 2023} & Head of Machine Learning Team in <<ЭДС>> LLC:
 		\begin{itemize}
 			\item Object detection and segmentation on photos and videos (NDA).
-			\item Combined several data sources for training.
-			\item I was the product owner of a synthetic dataset generator based on \href{https://www.unrealengine.com/en-US/unreal-engine-5}{Unreal Engine 5}, as well as filling the real dataset in CVAT.
+			\item Reduced false positive rate by 70\% and miss rate by 15\% in binary segmentation.
+			\item Detected and fixed a methodological error causing data leakage that inflated test metrics.
+			\item Solved the problem of merging, parsing, and balancing three data sources in different formats.
+			\item As Product Owner, led the development of a synthetic dataset generator using \href{https://www.unrealengine.com/en-US/unreal-engine-5}{Unreal Engine 5} to MVP.
 		\end{itemize}\\
 		\textbf{2021 -- 2022} & Video Analytics Team Lead (Senior) in \href{https://www.stream-labs.com/}{Stream Labs}:
 		\begin{itemize}
