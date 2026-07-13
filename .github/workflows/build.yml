@@ -3,12 +3,14 @@ on: [push]
 jobs:
   build_latex:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
 
       - name: Set up Git repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 2
+          fetch-depth: 0
 
       - name: Install TeX Live
         run: |
@@ -53,14 +55,19 @@ jobs:
       - name: Check for document changes
         id: changes
         run: |
-          if git diff --name-only HEAD~1 | grep -qE '\.(tex|bib|jpg|png|svg|eps|cls|sty)$'; then
-            echo "doc_changed=true" >> $GITHUB_OUTPUT
+          if git rev-parse latest^{commit} >/dev/null 2>&1; then
+            TAG_COMMIT=$(git rev-parse latest^{commit})
+            if git diff --name-only "$TAG_COMMIT" HEAD | grep -qE '\.(tex|bib|jpg|png|svg|eps|cls|sty)$'; then
+              echo "should_release=true" >> $GITHUB_OUTPUT
+            else
+              echo "should_release=false" >> $GITHUB_OUTPUT
+            fi
           else
-            echo "doc_changed=false" >> $GITHUB_OUTPUT
+            echo "should_release=true" >> $GITHUB_OUTPUT
           fi
 
       - name: Publish release
-        if: steps.changes.outputs.doc_changed == 'true'
+        if: steps.changes.outputs.should_release == 'true'
         uses: softprops/action-gh-release@v2
         with:
           tag_name: latest
