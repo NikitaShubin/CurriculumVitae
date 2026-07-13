@@ -24,29 +24,31 @@ jobs:
             texlive-plain-generic
 
       - name: Compile RUS
-        run: pdflatex -interaction=nonstopmode src/cv_rus.tex
+        working-directory: src
+        run: pdflatex -interaction=nonstopmode cv_rus.tex
 
       - name: Compile ENG
-        run: pdflatex -interaction=nonstopmode src/cv_eng.tex
+        working-directory: src
+        run: pdflatex -interaction=nonstopmode cv_eng.tex
 
       # Выгрузка результатов:
       - name: Upload RUS
         uses: actions/upload-artifact@v4
         with:
           name: cv_rus
-          path: cv_rus.pdf
+          path: src/cv_rus.pdf
       - name: Upload ENG
         uses: actions/upload-artifact@v4
         with:
           name: cv_eng
-          path: cv_eng.pdf
+          path: src/cv_eng.pdf
       - name: Upload Both
         uses: actions/upload-artifact@v4
         with:
           name: cv
           path: |
-            cv_rus.pdf
-            cv_eng.pdf
+            src/cv_rus.pdf
+            src/cv_eng.pdf
 
       - name: Check for document changes
         id: changes
@@ -64,6 +66,6 @@ jobs:
           tag_name: latest
           name: Latest CV
           make_latest: true
-          files: |
-            cv_rus.pdf
-            cv_eng.pdf
+        files: |
+          src/cv_rus.pdf
+          src/cv_eng.pdf

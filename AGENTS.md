@@ -1,0 +1,52 @@
+# AGENTS.md
+
+## Язык общения
+
+Всегда общайся с пользователем на русском языке. Все комментарии, объяснения и диалоги — на русском.
+
+## Проект
+
+Резюме (CV) на LaTeX. Две версии: русская (`src/cv_rus.tex`) и английская (`src/cv_eng.tex`).
+
+## Сборка
+
+Локальная сборка:
+```bash
+cd src
+pdflatex -interaction=nonstopmode cv_rus.tex
+pdflatex -interaction=nonstopmode cv_eng.tex
+```
+
+CI: `.github/workflows/build.yml`
+
+## Зависимости TeX Live
+
+При добавлении новых пакетов `\usepackage{...}` в `.tex` файлы необходимо:
+1. Проверить, установлена ли зависимость локально
+2. Добавить соответствующий `texlive-*` пакет в `apt-get install` в `.github/workflows/build.yml`
+3. Скомпилировать оба файла и убедиться, что страницы не уехали за поля
+
+Текущий список пакетов в CI:
+- texlive-latex-base
+- texlive-latex-recommended
+- texlive-latex-extra
+- texlive-fonts-extra
+- texlive-pictures
+- texlive-bibtex-extra
+- texlive-lang-cyrillic
+- texlive-plain-generic
+
+## Файлы проекта
+
+- `src/cv_rus.tex` — русская версия резюме
+- `src/cv_eng.tex` — английская версия резюме
+- `src/refs_rus.bib` — библиография (рус.)
+- `src/refs_eng.bib` — библиография (англ.)
+- `src/ava.jpg` — фотография
+- `.github/workflows/build.yml` — CI/CD сборщик
+
+## Важные замечания
+
+- Версии RUS и ENG должны содержать одинаковые данные. При изменении одной — обновлять другую.
+- Триггер релиза: только при изменениях в `*.tex`, `*.bib`, `*.jpg`, `*.png`, `*.svg`, `*.eps`, `*.cls`, `*.sty`.
+- Релиз публикуется в GitHub Releases с тегом `latest`.
