@@ -23,7 +23,8 @@ jobs:
             texlive-pictures \
             texlive-bibtex-extra \
             texlive-lang-cyrillic \
-            texlive-plain-generic
+            texlive-plain-generic \
+            cm-super
 
       - name: Compile RUS
         working-directory: src
@@ -52,22 +53,21 @@ jobs:
             src/cv_rus.pdf
             src/cv_eng.pdf
 
-      - name: Check for document changes
-        id: changes
-        run: |
-          if git rev-parse latest^{commit} >/dev/null 2>&1; then
-            TAG_COMMIT=$(git rev-parse latest^{commit})
-            if git diff --name-only "$TAG_COMMIT" HEAD | grep -qE '\.(tex|bib|jpg|png|svg|eps|cls|sty)$'; then
-              echo "should_release=true" >> $GITHUB_OUTPUT
-            else
-              echo "should_release=false" >> $GITHUB_OUTPUT
-            fi
-          else
-            echo "should_release=true" >> $GITHUB_OUTPUT
-          fi
+      # - name: Check for document changes
+      #   id: changes
+      #   run: |
+      #     if git rev-parse latest^{commit} >/dev/null 2>&1; then
+      #       TAG_COMMIT=$(git rev-parse latest^{commit})
+      #       if git diff --name-only "$TAG_COMMIT" HEAD | grep -qE '\.(tex|bib|jpg|png|svg|eps|cls|sty)$'; then
+      #         echo "should_release=true" >> $GITHUB_OUTPUT
+      #       else
+      #         echo "should_release=false" >> $GITHUB_OUTPUT
+      #       fi
+      #     else
+      #       echo "should_release=true" >> $GITHUB_OUTPUT
+      #     fi
 
       - name: Publish release
-        if: steps.changes.outputs.should_release == 'true'
         uses: softprops/action-gh-release@v2
         with:
           tag_name: latest
