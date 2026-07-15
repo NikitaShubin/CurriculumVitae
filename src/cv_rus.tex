@@ -1,14 +1,12 @@
 \documentclass[11pt]{article}
 
-\tracingpages=1
-
 %\usepackage[T2A]{fontenc}     % внутренняя T2A кодировка TeX
 \usepackage[russian]{babel}   % включение сов
 \usepackage[utf8]{inputenc}
 \usepackage[margin=0.25in]{geometry}
 \pagestyle{empty} % нумерация выкл.
-\typeout{=== DEBUG: textheight=\the\textheight, textwidth=\the\textwidth ===}
-\typeout{=== DEBUG: vsize=\the\vsize, hsize=\the\hsize ===}
+\setlength{\parskip}{0pt}
+\renewcommand{\arraystretch}{1.0}
 \addtolength{\textheight}{1.75in}
 \usepackage[colorlinks]{hyperref}
 \usepackage{longtable}
@@ -52,11 +50,6 @@
 	}{\end{list}}
 
 \begin{document}
-	\typeout{=== DEBUG: at begin document ===}
-	\typeout{=== DEBUG: fontenc = \f@encoding ===}
-	\typeout{=== DEBUG: fontfamily = \f@family ===}
-	\typeout{=== DEBUG: baselineskip = \the\baselineskip ===}
-	\typeout{=== DEBUG: parskip = \the\parskip ===}
 	\vspace*{-\baselineskip} % Удаление отсупа
 	\noindent
 	\begin{tabular}{p{0.19\textwidth} p{0.78\textwidth}}
