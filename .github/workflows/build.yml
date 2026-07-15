@@ -28,11 +28,19 @@ jobs:
 
       - name: Compile RUS
         working-directory: src
-        run: pdflatex -interaction=nonstopmode cv_rus.tex
+        run: |
+          pdflatex -interaction=nonstopmode cv_rus.tex
+          bibtex cv_rus
+          pdflatex -interaction=nonstopmode cv_rus.tex
+          pdflatex -interaction=nonstopmode cv_rus.tex
 
       - name: Compile ENG
         working-directory: src
-        run: pdflatex -interaction=nonstopmode cv_eng.tex
+        run: |
+          pdflatex -interaction=nonstopmode cv_eng.tex
+          bibtex cv_eng
+          pdflatex -interaction=nonstopmode cv_eng.tex
+          pdflatex -interaction=nonstopmode cv_eng.tex
 
       # Выгрузка результатов:
       - name: Upload RUS
