@@ -23,18 +23,9 @@ CI: `.github/workflows/build.yml`
 
 При добавлении новых пакетов `\usepackage{...}` в `.tex` файлы необходимо:
 1. Проверить, установлена ли зависимость локально
-2. Добавить соответствующий `texlive-*` пакет в `apt-get install` в `.github/workflows/build.yml`
-3. Скомпилировать оба файла и убедиться, что страницы не уехали за поля
+2. Скомпилировать оба файла и убедиться, что страницы не уехали за поля
 
-Текущий список пакетов в CI:
-- texlive-latex-base
-- texlive-latex-recommended
-- texlive-latex-extra
-- texlive-fonts-extra
-- texlive-pictures
-- texlive-bibtex-extra
-- texlive-lang-cyrillic
-- texlive-plain-generic
+CI использует `texlive-full` (полный набор), поэтому отдельные пакеты в `apt-get install` не перечисляются.
 
 ## Файлы проекта
 
