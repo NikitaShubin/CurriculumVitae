@@ -8,7 +8,6 @@
 \pagestyle{empty} % нумерация выкл.
 \setlength{\parskip}{0pt}
 \renewcommand{\arraystretch}{1.0}
-\tracingpages=1
 \addtolength{\textheight}{1.75in}
 \usepackage[colorlinks]{hyperref}
 \usepackage{longtable}
@@ -54,13 +53,13 @@
 	%\vspace{1em}
 	\noindent {\textbf{Employment history:}}
 	
+	\setbox10=\hbox{%
 	\begin{tabular} {l | p{0.815\textwidth}}
 		\textbf{2023 -- Now} & ML Team Lead in \href{https://agrodigit.ru/}{<<ЦПТ <<Агроцифра>> LLC}:
 		\begin{itemize}
 			\item Built a video data processing pipeline, assembled an annotation team, and developed software for speeding up annotation in \href{https://www.cvat.ai/}{CVAT} using Segment Anything Model \href{https://segment-anything.com/}{v1} and \href{https://sam2.metademolab.com/demo}{v2}. Key results presented at the \href{https://rutube.ru/video/4033ea0473199564892cc5a2f14dcfe6/}{D-Vision meetup}.
 			\item Developed and trained models to solve assigned problems.
 		\end{itemize}
-\typeout{=== DEBUG-ENG-1: prevdepth=\the\prevdepth, baselineskip=\the\baselineskip, parskip=\the\parskip ===}
 \\[0.5em]
 		\textbf{2022 -- 2023} & Head of Machine Learning Team in <<ЭДС>> LLC:
 		\begin{itemize}
@@ -70,21 +69,18 @@
 			\item Solved the problem of merging, parsing, and balancing three data sources in different formats.
 			\item As Product Owner, led the development of a synthetic dataset generator using \href{https://www.unrealengine.com/en-US/unreal-engine-5}{Unreal Engine 5} to MVP.
 		\end{itemize}
-\typeout{=== DEBUG-ENG-2: prevdepth=\the\prevdepth, baselineskip=\the\baselineskip, parskip=\the\parskip ===}
 \\[0.5em]
 		\textbf{2021 -- 2022} & Video Analytics Team Lead (Senior) in \href{https://www.stream-labs.com/}{Stream Labs}:
 		\begin{itemize}
 			\item a neural network model for ECG classification was developed, which is now working in the system called \href{https://va1235.wixsite.com/tis-tat/edinyj-kardiolog-respubliki-tatarst}{«Unified cardiologist of the Tatarstan Republic»};
 			\item a prototype of pathology detection in lungs computed tomography has been developed.
 		\end{itemize}
-\typeout{=== DEBUG-ENG-3: prevdepth=\the\prevdepth, baselineskip=\the\baselineskip, parskip=\the\parskip ===}
 \\[0.5em]
 		\textbf{2020 -- 2021} & Research programmer in \href{https://www.spiritdsp.com/company/}{Spirit DSP}:
 		\begin{itemize}
 			\item the development of a new video codec based on neural networks;
 			\item developing a real-time neural network replacing the background for video communication.
 		\end{itemize}
-\typeout{=== DEBUG-ENG-4: prevdepth=\the\prevdepth, baselineskip=\the\baselineskip, parskip=\the\parskip ===}
 \\[0.5em]
 		\textbf{2007 -- 2020} & Software engineer in Department of Automation and Information Technologies in control of \href{http://www.rsreu.ru/en/}{Ryazan State Radio Engineering University}:
 		\begin{itemize}
@@ -93,8 +89,10 @@
 			\item \hyperlink{AutorIDs}{40 publications in conference proceedings and scientific journals};
 			\item 2 patents and 1 computer program registration certificate.
 		\end{itemize}
-\typeout{=== DEBUG-ENG-5: prevdepth=\the\prevdepth, baselineskip=\the\baselineskip, parskip=\the\parskip ===}
-	\end{tabular}
+	\end{tabular}%
+	}
+\typeout{=== BOX-ENG-1: ht=\the\ht10, dp=\the\dp10, wd=\the\wd10 ===}
+	\box10
 	\vspace{0.3em}\\
 	\begin{longtable} {r | p{0.77\textwidth}}
 		\textbf{Area of interest} & СV, ML, DL, multi-agent systems, embadded systems.\\

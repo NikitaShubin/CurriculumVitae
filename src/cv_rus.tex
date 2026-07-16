@@ -7,7 +7,6 @@
 \pagestyle{empty} % нумерация выкл.
 \setlength{\parskip}{0pt}
 \renewcommand{\arraystretch}{1.0}
-\tracingpages=1
 \addtolength{\textheight}{1.75in}
 \usepackage[colorlinks]{hyperref}
 \usepackage{longtable}
@@ -88,6 +87,7 @@
 		\noindent {\sffamily{\Large{\textbf{Опыт работы:}}}}
 		\vspace{0.9em}\\
 		\noindent {\sffamily{\large{\textbf{2023 -- настоящее время: ML Team Lead в \href{https://agrodigit.ru/}{ООО <<ЦПТ <<Агроцифра>>}.}}}}\\
+		\setbox10=\hbox{%
 		\begin{tabular} {r|p{0.863\textwidth}}
 			Проекты & Автопилот комбайна и силосопровода (автозаполнение кузова).\\
 			\noindent{Достижения} & 
@@ -95,11 +95,14 @@
 			\item Выстроил конвейер обработки видеоданных, организовал команду разметки и разработал ПО для ускорения разметки в \href{https://www.cvat.ai/}{CVAT} с помощью Segment Anything Model \href{https://segment-anything.com/}{v1} и \href{https://sam2.metademolab.com/demo}{v2}. Основные результаты изложены на \href{https://rutube.ru/video/4033ea0473199564892cc5a2f14dcfe6/}{D-Vision-митапе}.
 			\item Обучил модели, решающие поставленные задачи.
 			\end{itemize}
-\typeout{=== DEBUG-RUS-1: prevdepth=\the\prevdepth, baselineskip=\the\baselineskip, parskip=\the\parskip ===}
-		\end{tabular}
+		\end{tabular}%
+		}
+\typeout{=== BOX-RUS-1: ht=\the\ht10, dp=\the\dp10, wd=\the\wd10 ===}
+		\box10
 		\vspace{0.3em}\hrule\vspace{0.1em}\hrule\vspace{0.5em}
 		
 		\noindent {\sffamily{\large{\textbf{2022 -- 2023: Руководитель ML-направления в ООО <<ЭДС>>.}}}}\\
+		\setbox11=\hbox{%
 		\begin{tabular} {r | p{0.863\textwidth}}
 			Задачи & Сегментация и детекция объектов на фото и видео (NDA).\\
 			Достижения &
@@ -109,11 +112,14 @@
 				\item Успешно решил проблему объединения, парсинга и балансировки трёх источников данных, представленных в разных форматах.
 				\item Выступая в роли Product Owner-а, довёл разработку генератора синтетического датасета с использованием игрового движка \href{https://www.unrealengine.com/en-US/unreal-engine-5}{Unreal Engine 5} до MVP.
 			\end{itemize}
-\typeout{=== DEBUG-RUS-2: prevdepth=\the\prevdepth, baselineskip=\the\baselineskip, parskip=\the\parskip ===}
-		\end{tabular}
+		\end{tabular}%
+		}
+\typeout{=== BOX-RUS-2: ht=\the\ht11, dp=\the\dp11, wd=\the\wd11 ===}
+		\box11
 		\vspace{0.3em}\hrule\vspace{0.1em}\hrule\vspace{0.5em}
 		
 		\noindent {\sffamily{\large{\textbf{2021 -- 2022: TeamLead видеогруппы машинного обучения в \href{https://www.stream-labs.com/}{Stream Labs}.}}}}\\
+		\setbox12=\hbox{%
 		\begin{tabular} {r | p{0.863\textwidth}}
 			Задачи & Постановка диагнозов по 1D (ЭКГ), 2D (фото сетчатки глаза) и 3D-данным (КТ лёгких). \\
 			Достижения &
@@ -121,25 +127,31 @@
 				\item Разработана модель нейронной сети для классификации ЭКГ, которая была интегрирована в систему \href{https://va1235.wixsite.com/tis-tat/edinyj-kardiolog-respubliki-tatarst}{«Единый кардиолог Республики Татарстан»}.
 				\item Проект, посвящённый поиску патологий в компьютерной томографии лёгких, доведён до состояния прототипа.
 			\end{itemize}
-\typeout{=== DEBUG-RUS-3: prevdepth=\the\prevdepth, baselineskip=\the\baselineskip, parskip=\the\parskip ===}
-		\end{tabular}
+		\end{tabular}%
+		}
+\typeout{=== BOX-RUS-3: ht=\the\ht12, dp=\the\dp12, wd=\the\wd12 ===}
+		\box12
 		\vspace{0.3em}\hrule\vspace{0.1em}\hrule\vspace{0.5em}
 		
 		\noindent {\sffamily{\large{\textbf{2020 -- 2021: Программист-исследователь в \href{https://www.spiritdsp.com/company/}{Spirit DSP}.}}}}\\
+		\setbox13=\hbox{%
 		\begin{tabular} {r | p{0.863\textwidth}}
 			Задачи &
 			\begin{itemize}
 				\item Разработка видеокодека на основе нейронных сетей.
 				\item Замена фона на видео.
 			\end{itemize}
-\typeout{=== DEBUG-RUS-4: prevdepth=\the\prevdepth, baselineskip=\the\baselineskip, parskip=\the\parskip ===}
 			\\
 			Достижения &
 			Предложил и программно реализовал способ кодирования видео, вошедший в PoC.
-		\end{tabular}
+		\end{tabular}%
+		}
+\typeout{=== BOX-RUS-4: ht=\the\ht13, dp=\the\dp13, wd=\the\wd13 ===}
+		\box13
 		\vspace{0.3em}\hrule\vspace{0.1em}\hrule\vspace{0.5em}
 		
 		\noindent {\sffamily{\large{\textbf{2007 -- 2020: Инженер-программист в \href{http://www.rsreu.ru/}{ФГБОУ ВО <<РГРТУ>>}.}}}}\\
+		\setbox14=\hbox{%
 		\begin{tabular} {r | p{0.863\textwidth}}
 			Задачи &
 			\begin{itemize}
@@ -147,7 +159,6 @@
 				\item Написание научных статей и участие в конференциях с докладами.
 				\item Написание и проведение лекций и лабораторных работ для студентов ВУЗа.
 			\end{itemize}
-\typeout{=== DEBUG-RUS-5: prevdepth=\the\prevdepth, baselineskip=\the\baselineskip, parskip=\the\parskip ===}
 			\\
 			Достижения &
 			\begin{itemize}
@@ -156,8 +167,10 @@
 				\item \hyperlink{AutorIDs}{40 публикаций в сборниках трудов конференций и научных журналах};
 				\item 2 патента на полезную модель и 1 свидетельство регистрации программы для ЭВМ.
 			\end{itemize}
-\typeout{=== DEBUG-RUS-6: prevdepth=\the\prevdepth, baselineskip=\the\baselineskip, parskip=\the\parskip ===}
-		\end{tabular}
+		\end{tabular}%
+		}
+\typeout{=== BOX-RUS-5: ht=\the\ht14, dp=\the\dp14, wd=\the\wd14 ===}
+		\box14
 	
 	\newpage
 	
