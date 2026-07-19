@@ -40,6 +40,10 @@
 \renewcommand{\@biblabel}[1]{#1.} 
 \makeatother
 
+\newcounter{expyears}
+\setcounter{expyears}{\year}
+\addtocounter{expyears}{-2007}
+
 \usepackage{enumitem}
 \newlist{tabitemize}{itemize}{1}
 \setlist[itemize]{nosep, leftmargin=*}
@@ -65,7 +69,7 @@
 			\noindent\faMobile~+7 920 633 94 11 | \href{mailto:shubin.kit@ya.ru}{\faEnvelope~shubin.kit@ya.ru} | \href{https://t.me/kitbrain}{\faTelegram~@kitbrain}
 			\vspace{1em}\hrule\vspace{1em}
 			\noindent {\textbf{Профиль:}} Team Lead/Data Techlead/Senior Data Scientist (DL, CV).\\ \href{https://disk.yandex.ru/i/ffl8gXNlYxGT8g}{Кандидат технических наук}.
-			Решаю задачи технического зрения с 2007~г.\ (18~лет).
+			Решаю задачи технического зрения с 2007~г.\ (\theexpyears{}~лет).
 			\vspace{1em}\hrule\vspace{1em}
 			
 			\noindent\begin{tabular} {llllllll}

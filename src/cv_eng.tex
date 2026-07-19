@@ -25,6 +25,10 @@
 \renewcommand{\@biblabel}[1]{#1.} 
 \makeatother
 
+\newcounter{expyears}
+\setcounter{expyears}{\year}
+\addtocounter{expyears}{-2007}
+
 \usepackage{enumitem}
 \newlist{tabitemize}{itemize}{1}
 \setlist[itemize]{nosep, leftmargin=*}
@@ -44,7 +48,7 @@
 	
 	\vspace{1em}
 	
-	\noindent {\textbf{Profile:}} Team Lead/Data Techlead/Senior Data Scientist (DL, CV). \href{https://disk.yandex.ru/i/ffl8gXNlYxGT8g}{PhD in engineering}. General work experience as a research programmer -- 18 years.\\
+	\noindent {\textbf{Profile:}} Team Lead/Data Techlead/Senior Data Scientist (DL, CV). \href{https://disk.yandex.ru/i/ffl8gXNlYxGT8g}{PhD in engineering}. General work experience as a research programmer -- \theexpyears{} years.\\
 
 	%\vspace{1em}
 	\noindent {\textbf{Employment history:}}
