@@ -16,6 +16,7 @@ jobs:
         run: |
           sudo apt-get update -y
           sudo apt-get install -y --no-install-recommends \
+            latexmk \
             texlive-latex-base \
             texlive-latex-recommended \
             texlive-latex-extra \
@@ -29,19 +30,11 @@ jobs:
 
       - name: Compile RUS
         working-directory: src
-        run: |
-          pdflatex -interaction=nonstopmode cv_rus.tex
-          bibtex cv_rus
-          pdflatex -interaction=nonstopmode cv_rus.tex
-          pdflatex -interaction=nonstopmode cv_rus.tex
+        run: latexmk -pdf cv_rus.tex
 
       - name: Compile ENG
         working-directory: src
-        run: |
-          pdflatex -interaction=nonstopmode cv_eng.tex
-          bibtex cv_eng
-          pdflatex -interaction=nonstopmode cv_eng.tex
-          pdflatex -interaction=nonstopmode cv_eng.tex
+        run: latexmk -pdf cv_eng.tex
 
       # Выгрузка результатов:
       - name: Upload RUS
