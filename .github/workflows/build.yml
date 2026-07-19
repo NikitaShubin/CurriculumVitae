@@ -16,7 +16,16 @@ jobs:
         run: |
           sudo apt-get update -y
           sudo apt-get install -y --no-install-recommends \
-            texlive-full
+            texlive-latex-base \
+            texlive-latex-recommended \
+            texlive-latex-extra \
+            texlive-fonts-recommended \
+            texlive-fonts-extra \
+            texlive-pictures \
+            texlive-bibtex-extra \
+            texlive-lang-cyrillic \
+            texlive-plain-generic \
+            cm-super
 
       - name: Compile RUS
         working-directory: src
