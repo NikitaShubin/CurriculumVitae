@@ -5,6 +5,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[margin=0.25in]{geometry}
 \pagestyle{empty} % нумерация выкл.
+\raggedbottom
 \setlength{\parskip}{0pt}
 \renewcommand{\arraystretch}{1.0}
 \addtolength{\textheight}{1.75in}
@@ -39,15 +40,10 @@
 \renewcommand{\@biblabel}[1]{#1.} 
 \makeatother
 
-\renewenvironment{itemize}{
-	\begin{list}{\labelitemi}{
-			\setlength{\topsep   }{0pt}
-			\setlength{\partopsep}{0pt}
-			\setlength{\parskip  }{0pt}
-			\setlength{\parsep   }{0pt}
-			\setlength{\itemsep  }{0pt}
-		}
-	}{\end{list}}
+\usepackage{enumitem}
+\newlist{tabitemize}{itemize}{1}
+\setlist[itemize]{nosep, leftmargin=*}
+\setlist[tabitemize]{nosep, leftmargin=1.5em, label=\labelitemi, after={\vspace{-\baselineskip}}}
 
 \begin{document}
 	 % Удаление отсупа
@@ -90,10 +86,10 @@
 		\begin{tabular} {r|p{0.863\textwidth}}
 			Проекты & Автопилот комбайна и силосопровода (автозаполнение кузова).\\
 			\noindent{Достижения} & 
-			\begin{itemize}
+			\begin{tabitemize}
 			\item Выстроил конвейер обработки видеоданных, организовал команду разметки и разработал ПО для ускорения разметки в \href{https://www.cvat.ai/}{CVAT} с помощью Segment Anything Model \href{https://segment-anything.com/}{v1} и \href{https://sam2.metademolab.com/demo}{v2}. Основные результаты изложены на \href{https://rutube.ru/video/4033ea0473199564892cc5a2f14dcfe6/}{D-Vision-митапе}.
 			\item Обучил модели, решающие поставленные задачи.
-			\end{itemize}
+			\end{tabitemize}
 		\end{tabular}%
 		\vspace{0.3em}\hrule\vspace{0.1em}\hrule\vspace{0.5em}
 		
@@ -101,12 +97,12 @@
 		\begin{tabular} {r | p{0.863\textwidth}}
 			Задачи & Сегментация и детекция объектов на фото и видео (NDA).\\
 			Достижения &
-			\begin{itemize}
+			\begin{tabitemize}
 				\item Снизил частоты ложных обнаружений на 70\% и пропусков на 15\% в задаче бинарной сегментации.
 				\item Обнаружил и устранил методологическую ошибку, приведшую к утечке данных (data leakage) в датасете и завышению показателей качества на тестовых данных.
 				\item Успешно решил проблему объединения, парсинга и балансировки трёх источников данных, представленных в разных форматах.
 				\item Выступая в роли Product Owner-а, довёл разработку генератора синтетического датасета с использованием игрового движка \href{https://www.unrealengine.com/en-US/unreal-engine-5}{Unreal Engine 5} до MVP.
-			\end{itemize}
+			\end{tabitemize}
 		\end{tabular}%
 		\vspace{0.3em}\hrule\vspace{0.1em}\hrule\vspace{0.5em}
 		
@@ -114,20 +110,20 @@
 		\begin{tabular} {r | p{0.863\textwidth}}
 			Задачи & Постановка диагнозов по 1D (ЭКГ), 2D (фото сетчатки глаза) и 3D-данным (КТ лёгких). \\
 			Достижения &
-			\begin{itemize}
+			\begin{tabitemize}
 				\item Разработана модель нейронной сети для классификации ЭКГ, которая была интегрирована в систему \href{https://va1235.wixsite.com/tis-tat/edinyj-kardiolog-respubliki-tatarst}{«Единый кардиолог Республики Татарстан»}.
 				\item Проект, посвящённый поиску патологий в компьютерной томографии лёгких, доведён до состояния прототипа.
-			\end{itemize}
+			\end{tabitemize}
 		\end{tabular}%
 		\vspace{0.3em}\hrule\vspace{0.1em}\hrule\vspace{0.5em}
 		
 		\noindent {\sffamily{\large{\textbf{2020 -- 2021: Программист-исследователь в \href{https://www.spiritdsp.com/company/}{Spirit DSP}.}}}}\\
 		\begin{tabular} {r | p{0.863\textwidth}}
 			Задачи &
-			\begin{itemize}
+			\begin{tabitemize}
 				\item Разработка видеокодека на основе нейронных сетей.
 				\item Замена фона на видео.
-			\end{itemize}
+			\end{tabitemize}
 			\\
 			Достижения &
 			Предложил и программно реализовал способ кодирования видео, вошедший в PoC.
@@ -137,19 +133,19 @@
 		\noindent {\sffamily{\large{\textbf{2007 -- 2020: Инженер-программист в \href{http://www.rsreu.ru/}{ФГБОУ ВО <<РГРТУ>>}.}}}}\\
 		\begin{tabular} {r | p{0.863\textwidth}}
 			Задачи &
-			\begin{itemize}
+			\begin{tabitemize}
 				\item Разработка и исследование алгоритмов и методов обработки изображений и видео.
 				\item Написание научных статей и участие в конференциях с докладами.
 				\item Написание и проведение лекций и лабораторных работ для студентов ВУЗа.
-			\end{itemize}
+			\end{tabitemize}
 			\\
 			Достижения &
-			\begin{itemize}
+			\begin{tabitemize}
 				\item Мои проекты, посвящённые обнаружению линий и границ на изображении \cite{wrt, mas}, получили поддержку грантов \href{https://www.rfbr.ru/project_search/350568/}{РФФИ}, \href{https://grants.extech.ru/grants/res/winners.php?OZ=9&TZ=K&year=2016}{Гранта Президента} и \href{http://rscf.ru/sites/default/files/docfiles/Winners_0029.pdf}{РНФ};
 				\item \href{https://ryazan.bezformata.com/listnews/aspiranti-rgrtu-pobediteli-konkursa/81548415/}{«Молодой ученый года 2020»};
 				\item \hyperlink{AutorIDs}{40 публикаций в сборниках трудов конференций и научных журналах};
 				\item 2 патента на полезную модель и 1 свидетельство регистрации программы для ЭВМ.
-			\end{itemize}
+			\end{tabitemize}
 		\end{tabular}%
 	
 	\newpage
